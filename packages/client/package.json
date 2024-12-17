@@ -2,7 +2,7 @@
   "name": "@ringly/client",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://sgmills2.github.io/ringly/",
+  "homepage": "https://sgmills2.github.io/Ringly/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
