@@ -1,7 +1,7 @@
 import { useRef, useEffect, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Mesh, TorusGeometry, RingGeometry, Color, Vector2, TextureLoader, NearestFilter, CylinderGeometry } from 'three'
-import { Environment, AccumulativeShadows, RandomizedLight, ContactShadows } from '@react-three/drei'
+import { Mesh, Color, Vector2, TextureLoader, NearestFilter } from 'three'
+import { Environment, ContactShadows } from '@react-three/drei'
 import { useRingStore } from '@/stores/ringStore'
 
 // Base64 textures
