@@ -39,7 +39,7 @@ const WrapperBox = styled(Box)({
 
 const CollapseButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
-  right: -20,
+  left: -20,
   top: '50%',
   transform: 'translateY(-50%)',
   zIndex: 1,
@@ -58,10 +58,11 @@ const MobilePanel = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isCollapsed',
 })<{ isCollapsed?: boolean }>(({ theme, isCollapsed }) => ({
   position: 'relative',
+  width: 320,
   backgroundColor: theme.vars.palette.background.surface,
   [theme.breakpoints.down('sm')]: {
     position: 'fixed',
-    right: isCollapsed ? 'calc(-320px - 1rem)' : '0',
+    right: isCollapsed ? -320 : 0,
     top: 0,
     bottom: 0,
     transition: 'right 0.3s ease-in-out',
@@ -119,8 +120,8 @@ export default function App() {
             onClick={() => setIsCollapsed(!isCollapsed)}
             sx={{
               transform: isCollapsed ? 
-                'translate(-20px, -50%) rotate(180deg)' : 
-                'translate(-20px, -50%)',
+                'translate(0, -50%) rotate(180deg)' : 
+                'translate(0, -50%)',
             }}
           >
             <KeyboardArrowRightRoundedIcon />
