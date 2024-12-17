@@ -9,6 +9,13 @@
   - [ ] Band texture selection (polished, brushed, hammered)
   - [ ] Prong style selection
   - [ ] Ring profile options (comfort fit, flat, knife edge)
+- [ ] Mobile UI Improvements:
+  - [x] Collapsible customization panel
+  - [ ] Bottom sheet controls for mobile
+  - [ ] Swipeable customization sections
+  - [ ] Gesture controls for 3D view
+  - [ ] Haptic feedback for interactions
+  - [ ] Picture-in-picture view mode
 
 ## Phase 2: 3D Rendering Improvements
 - [ ] Enhance 3D model quality:

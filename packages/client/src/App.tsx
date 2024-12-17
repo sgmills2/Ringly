@@ -1,8 +1,9 @@
-import { Box, Container, Sheet, Typography, CircularProgress } from '@mui/joy'
+import { Box, Container, Sheet, Typography, CircularProgress, IconButton } from '@mui/joy'
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded'
 import { styled } from '@mui/joy/styles'
 import { Canvas, Props as CanvasProps } from '@react-three/fiber'
 import { OrbitControls, Loader } from '@react-three/drei'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 
 import RingViewer from './components/RingViewer'
 import CustomizationPanel from './components/CustomizationPanel'
@@ -36,6 +37,39 @@ const WrapperBox = styled(Box)({
   height: 'calc(100% - 80px)',
 })
 
+const CollapseButton = styled(IconButton)(({ theme }) => ({
+  position: 'absolute',
+  right: -20,
+  top: '50%',
+  transform: 'translateY(-50%)',
+  zIndex: 1,
+  backgroundColor: theme.vars.palette.background.surface,
+  boxShadow: theme.shadow.sm,
+  borderRadius: '50%',
+  '&:hover': {
+    backgroundColor: theme.vars.palette.background.level1,
+  },
+  [theme.breakpoints.up('sm')]: {
+    display: 'none',
+  },
+}))
+
+const MobilePanel = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'isCollapsed',
+})<{ isCollapsed?: boolean }>(({ theme, isCollapsed }) => ({
+  position: 'relative',
+  backgroundColor: theme.vars.palette.background.surface,
+  [theme.breakpoints.down('sm')]: {
+    position: 'fixed',
+    right: isCollapsed ? 'calc(-320px - 1rem)' : '0',
+    top: 0,
+    bottom: 0,
+    transition: 'right 0.3s ease-in-out',
+    zIndex: 1000,
+    height: '100%',
+  },
+}))
+
 function LoadingFallback() {
   return (
     <LoadingBox>
@@ -46,6 +80,8 @@ function LoadingFallback() {
 }
 
 export default function App() {
+  const [isCollapsed, setIsCollapsed] = useState(false)
+
   const canvasProps: Partial<CanvasProps> = {
     camera: { position: [0, 0, 5], fov: 45 },
     style: { background: '#f9f9fa' }
@@ -77,7 +113,20 @@ export default function App() {
           </ErrorBoundary>
         </ViewerSheet>
 
-        <CustomizationPanel />
+        <MobilePanel isCollapsed={isCollapsed}>
+          <CollapseButton 
+            variant="soft"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            sx={{
+              transform: isCollapsed ? 
+                'translate(-20px, -50%) rotate(180deg)' : 
+                'translate(-20px, -50%)',
+            }}
+          >
+            <KeyboardArrowRightRoundedIcon />
+          </CollapseButton>
+          <CustomizationPanel />
+        </MobilePanel>
       </WrapperBox>
     </Container>
   )
