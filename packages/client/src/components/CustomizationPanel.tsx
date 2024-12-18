@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from '@mui/joy'
 import { useRingStore, type BandShape, type MetalFinish, type EnvironmentPreset, type SettingType } from '@/stores/ringStore'
+import ChatBot from './ChatBot'
 
 const metals = [
   { label: 'Yellow Gold', value: '#FFD700' },
@@ -88,6 +89,8 @@ export default function CustomizationPanel() {
         overflow: 'auto',
       }}
     >
+      <ChatBot />
+      
       <Typography level="h3" sx={{ fontFamily: 'display' }}>
         Customize Your Ring
       </Typography>
