@@ -48,21 +48,19 @@ const CollapseButton = styled(IconButton)(({ theme }) => ({
   borderRadius: '50%',
   '&:hover': {
     backgroundColor: theme.vars.palette.background.level1,
-  },
-  [theme.breakpoints.up('sm')]: {
-    display: 'none',
-  },
+  }
 }))
 
 const MobilePanel = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isCollapsed',
 })<{ isCollapsed?: boolean }>(({ theme, isCollapsed }) => ({
   position: 'relative',
-  width: 320,
   backgroundColor: theme.vars.palette.background.surface,
+  transition: 'width 0.3s ease-in-out',
+  width: isCollapsed ? 0 : 320,
   [theme.breakpoints.down('sm')]: {
     position: 'fixed',
-    right: isCollapsed ? -320 : 0,
+    right: isCollapsed ? 10 : 0,
     top: 0,
     bottom: 0,
     transition: 'right 0.3s ease-in-out',
