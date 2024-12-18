@@ -1,13 +1,5 @@
 import { useState } from 'react'
-import {
-  Sheet,
-  Input,
-  IconButton,
-  Typography,
-  Box,
-  Avatar,
-  Stack,
-} from '@mui/joy'
+import { Sheet, Input, IconButton, Typography, Box, Avatar, Stack } from '@mui/joy'
 import SendRoundedIcon from '@mui/icons-material/SendRounded'
 import { styled } from '@mui/joy/styles'
 
@@ -69,7 +61,7 @@ const InputContainer = styled(Box)(({ theme }) => ({
 export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
-      text: "Hi! I'm your ring design assistant. How can I help you today?",
+      text: "Hi! I'm Ringly. How can I help you design your perfect ring today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -113,7 +105,7 @@ export default function ChatBot() {
         sx={{ mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}
       >
         <Avatar size="sm" variant="soft">R</Avatar>
-        Ring Design Assistant
+        Ringly
       </Typography>
       
       <MessageContainer>
@@ -145,7 +137,7 @@ export default function ChatBot() {
         <Input
           size="sm"
           variant="soft"
-          placeholder="Type your message..."
+          placeholder="Start Your Ring Design Here..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
